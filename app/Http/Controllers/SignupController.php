@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 use Validator;
 use Auth;
 
@@ -63,7 +64,7 @@ class SignupController extends Controller
                 return response()->json($response, 200); 
             }
             return response()->json(['message' => 'Wrong email or password'], 401);
-        }catch(\Throwable $th) {
+        }catch(\Throwable) {
             return response()->json([
                 'status' => false,
                 "message"=>"Error",
